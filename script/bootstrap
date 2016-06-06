@@ -4,8 +4,8 @@ function bootstrap {
   local shome="${_hugo_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   source "$shome/script/profile"
 
-  local url_hugo_Darwin='https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_darwin_amd64.zip'
-  local url_hugo_Linux='https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz'
+  local url_hugo_Darwin='https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_osx-64bit.tgz'
+  local url_hugo_Linux='https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz'
 
   local url_hugo="url_hugo_$(uname -s)"
   local fnm_hugo="$(basename "${!url_hugo}")"
@@ -14,15 +14,12 @@ function bootstrap {
   mkdir -p "$shome/vendor"
   pushd "$shome/vendor"
   case "${BASEBOX_CACHE}/curl/$fnm_hugo" in
-		*.zip)
-		  unzip -o "${BASEBOX_CACHE}/curl/$fnm_hugo"
-			;;
-		*.tar.gz)
-			tar xvfz "${BASEBOX_CACHE}/curl/$fnm_hugo"
-			;;
-	esac
+    *.tgz)
+      tar xvfz "${BASEBOX_CACHE}/curl/$fnm_hugo"
+      ;;
+  esac
 
-  (set +f; ln -nfs "$shome"/vendor/hugo*/hugo_0.15_*amd64 "$shome/bin/hugo")
+  (set +f; ln -nfs "$shome"/vendor/hugo "$shome/bin/hugo")
 
   popd
 }
