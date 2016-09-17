@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function bootstrap {
-  local shome="${_hugo_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
   local url_hugo_Darwin='https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_osx-64bit.tgz'
