@@ -4,8 +4,8 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local url_hugo_Darwin='https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_osx-64bit.tgz'
-  local url_hugo_Linux='https://github.com/spf13/hugo/releases/download/v0.16/hugo_0.16_linux-64bit.tgz'
+  local url_hugo_Darwin="https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_macOS-64bit.zip"
+  local url_hugo_Linux="https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
 
   local url_hugo="url_hugo_$(uname -s)"
   local fnm_hugo="$(basename "${!url_hugo}")"
