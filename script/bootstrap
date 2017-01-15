@@ -15,7 +15,7 @@ function bootstrap {
   pushd "$shome/vendor"
   case "${BASEBOX_CACHE}/curl/$fnm_hugo" in
     *.tgz)
-      tar xvfz "${BASEBOX_CACHE}/curl/$fnm_hugo"
+      tar xfz "${BASEBOX_CACHE}/curl/$fnm_hugo"
       ;;
   esac
 
