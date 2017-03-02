@@ -14,13 +14,17 @@ function bootstrap {
   mkdir -p "$shome/vendor"
   pushd "$shome/vendor"
   case "${BASEBOX_CACHE}/curl/$fnm_hugo" in
-    *.tgz)
+    *.tar.gz)
       tar xfz "${BASEBOX_CACHE}/curl/$fnm_hugo"
       ;;
+    *.zip)
+      unzip -o "${BASEBOX_CACHE}/curl/$fnm_hugo"
+      ;;
   esac
+  popd
 
-  (set +f; ln -nfs "$shome"/vendor/hugo "$shome/bin/hugo")
-
+  pushd "$shome/bin"
+  ln -nfs "../vendor/hugo_${HUGO_VERSION}_$(uname -s | tr '[:upper:]' '[:lower:]')_amd64/hugo_${HUGO_VERSION}_$(uname -s | tr '[:upper:]' '[:lower:]')_amd64" "$shome/bin/hugo"
   popd
 }
 
