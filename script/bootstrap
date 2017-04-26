@@ -4,7 +4,7 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local url_hugo_Darwin="https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_macOS-64bit.zip"
+  local url_hugo_Darwin="https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_macOS-64bit.tar.gz"
   local url_hugo_Linux="https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz"
 
   local url_hugo="url_hugo_$(uname -s)"
@@ -13,14 +13,7 @@ function bootstrap {
 
   mkdir -p "$shome/vendor"
   pushd "$shome/vendor"
-  case "${BASEBOX_CACHE}/curl/$fnm_hugo" in
-    *.tar.gz)
-      tar xfz "${BASEBOX_CACHE}/curl/$fnm_hugo"
-      ;;
-    *.zip)
-      unzip -o "${BASEBOX_CACHE}/curl/$fnm_hugo"
-      ;;
-  esac
+  tar xfz "${BASEBOX_CACHE}/curl/$fnm_hugo"
   popd
 
   pushd "$shome/bin"
