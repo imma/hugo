@@ -17,7 +17,7 @@ function bootstrap {
   popd
 
   pushd "$shome/bin"
-  ln -nfs "../vendor/hugo_${HUGO_VERSION}_$(uname -s | tr '[:upper:]' '[:lower:]')_amd64/hugo_${HUGO_VERSION}_$(uname -s | tr '[:upper:]' '[:lower:]')_amd64" "$shome/bin/hugo"
+  ln -nfs "../vendor/hugo" "$shome/bin/hugo"
   popd
 }
 
