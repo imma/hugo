@@ -4,7 +4,7 @@ function _hugo_profile {
   local shome="${_hugo_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
-  HUGO_VERSION='0.25.1'
+  HUGO_VERSION='0.26'
 }
 
 _hugo_profile
