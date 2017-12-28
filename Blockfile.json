@@ -1,0 +1,6 @@
+{
+  "require": [],
+  "versions": {
+    "hugo": "gohugoio/hugo"
+  }
+}
